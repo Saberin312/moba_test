@@ -7,6 +7,7 @@ package abcTest.mumberTest.collection;
  *@Modified By:
  */
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -37,5 +38,71 @@ public class GenericTest {
 
         //取出数据时不需要进行转型了
         Hero h = genericheros.get(0);
+
+        //聊胜于无的简写
+        ArrayList<Hero> heroes = new ArrayList<>();
+        heroes.add(new Hero("GALLEN"));
+        heroes.add(new Hero("Timo"));
+        heroes.add(new Hero("Timo1"));
+        heroes.add(new Hero("Gallen1"));
+
+        System.out.println();
+        //遍历Arraylist
+        for (int i = 0; i < heroes.size()-1; i++) {
+            Hero hero = heroes.get(i);
+            System.out.println(hero.getName());
+//            System.out.println(heros.get(i));
+
+        }
+        //迭代器iterator
+        System.out.println("使用while的iterator");
+        Iterator<Hero> iterator = heroes.iterator();
+        while (iterator.hasNext()) {
+            Hero h2 = iterator.next();
+            System.out.println(h);
+
+        }
+        System.out.println("for的interator");
+        for (Iterator<Hero> iterator1=heroes.iterator(); iterator1.hasNext(); ) {
+            Hero h3 = iterator1.next();
+            System.out.println(h3.getName());
+        }
+        System.out.println("增强型for循环");
+        for (Hero h3 : heroes) {
+            System.out.println(h3.getName());
+        }
+
+        System.out.println(heroes.get(0));
+
+        //泛型练习 可以放整数，浮点数，不可放字符串
+        //利用数字类Number
+//        ArrayList<Float> floatInteger = new ArrayList<>();
+//        floatInteger.add(4.0);
+        ArrayList<Number> numbers = new ArrayList<>();
+        numbers.add(123);
+        numbers.add(123f);
+        numbers.add(123d);
+        System.out.println(numbers.get(0));
+        System.out.println(numbers.get(1));
+        System.out.println(numbers.get(2));
+
+        //练习
+        ArrayList<Number> numbers1 = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            numbers1.add(i);
+        }
+        System.out.println("输入完毕");
+        for (int j=0;j< numbers1.size();j++) {
+//            System.out.println(j);
+            if (numbers1.get(j).intValue()% 8 == 0) {
+                System.out.println("删除" + numbers1.get(j));
+                numbers1.remove(j);
+
+            }
+
+        }
+        System.out.println("遍历完毕");
+
+
     }
 }
